@@ -1,0 +1,61 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.contentNewOrder {
+  padding: 0 25rem;
+}
+
+.titleNewOrder {
+  &::before {
+    content: "";
+    border-left: 4px solid v.$action2;
+    margin-right: 4px;
+  }
+}
+
+.productList {
+  display: flex;
+
+  align-items: center;
+  padding: 0 2rem;
+
+  &__list {
+    font-size: 2rem;
+    list-style: none;
+    margin-right: 10px;
+    text-transform: uppercase;
+    flex: 1;
+  }
+  &__input {
+    outline: none;
+    padding: 0.6rem;
+    border: none;
+    box-shadow: 0 0 5pt 0.5pt #9b9b9b;
+  }
+}
+.total {
+  margin-top: 5rem;
+  border-top: 1px solid #e1e1e1;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  &__pay {
+    font-weight: 800;
+  }
+}
+.ButtonNewClient--newOrder {
+  border: none;
+  width: 100%;
+}
+.ButtonNewClient--newOrder[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  border: none;
+  cursor: not-allowed;
+}
+.newOrderError{
+  background-color: v.$danger;
+  text-align: center;
+  font-size: 1.8rem;
+}

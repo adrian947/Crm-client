@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useMemo } from "react";
+import { ApolloProvider } from "@apollo/client";
 
-function App() {
+import AuthLayout from "./components/layout/authLayout/AuthLayout";
+import { Navigation } from "./routes/Navigation";
+import { AuthcontextUser } from "./context/authContext";
+import { decodeToken } from "./helpers/auth";
+import client from "./config/apollo";
+import { OrderContextComponent } from "./context/OrderContext";
+
+const App = () => {
+  const [auth, setAuth] = useState(undefined);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setAuth(null);
+    } else {
+      const decoded = decodeToken(token);
+      setAuth(decoded);
+    }
+  }, []);
+  const logOut = () => {
+    localStorage.removeItem("token");
+    setAuth(null);
+  };
+
+  const setUser = (user) => {
+    setAuth(user);
+  };
+
+  const authData = useMemo(
+    () => ({
+      auth,
+      logOut,
+      setUser,
+    }),
+    [auth]
+  );
+
+  if (auth === undefined) return null;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ApolloProvider client={client}>
+        <AuthcontextUser.Provider value={authData}>
+          <OrderContextComponent>
+            <div className="app">{!auth ? <AuthLayout /> : <Navigation />}</div>
+          </OrderContextComponent>
+        </AuthcontextUser.Provider>
+      </ApolloProvider>
     </div>
   );
-}
+};
 
 export default App;

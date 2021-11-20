@@ -1,0 +1,62 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.layout {
+  display: flex;
+  &__headerChildren {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.sidebar {
+  min-width: 18rem;
+  background-color: v.$border-dark;
+
+  &__nav {
+    height: 100vh;
+    padding: 2rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 1rem;
+  }
+  &__link {
+    color: #fff;
+    font-size: 2rem;
+  }
+  &__title {
+    color: #fff;
+    text-align: center;
+    margin-top: 3rem;
+  }
+}
+
+.header {
+  height: 10rem;
+  background-color: v.$border-dark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  &__title {
+    color: #fff;
+  }
+  &__button {
+    height: 4rem;
+    border: none;
+    text-transform: uppercase;
+    background-color: v.$action2;
+
+    &:hover {
+      background-color: darken(v.$action2, 10);
+    }
+  }
+}
+.sidebar__list--special {
+  border: 1px solid v.$action;
+  margin-top: 2rem;
+  width: 13rem;
+}

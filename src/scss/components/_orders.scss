@@ -1,0 +1,78 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.noOrders {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid v.$border-gray;
+  border-bottom: 1px solid v.$border-gray;
+  padding: 4rem;
+  color: v.$danger;
+}
+
+.contenedorOrder {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid v.$action2;
+  padding: 0 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.cardOrder {
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  &__li {
+    list-style: square;
+  }
+
+  &__art {
+    display: flex;
+    flex-direction: column;
+  }
+  &__item {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  &__total {
+    border-top: 1px solid v.$action;
+    &--span {
+      font-weight: bold;
+    }
+  }
+
+  &__state {
+    color: #fff;   
+    padding: 0.5rem;
+    display: inline;
+    width: auto;
+    outline: none;
+  }
+  &__name {
+    display: inline-block;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+.ButtonNewClient--deleteOrder {
+  border: none;
+  background-color: v.$danger;
+  width: 100%;
+  &:hover {
+    background-color: darken(v.$danger, 10);
+  }
+}
+
+.blue{
+  background-color: v.$success;
+}
+.violet{
+  background-color: rgb(168, 78, 168);
+}
+.red{
+  background-color:  v.$danger;
+}

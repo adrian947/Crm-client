@@ -1,0 +1,78 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.pageAuth {
+  background-color: #40394A;
+  height: 100vh;
+}
+.title {
+  margin-bottom: 2rem;
+}
+.container {
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  max-width: 40rem;
+  text-align: center;
+  margin-top: 10rem;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding: 2rem;
+  height: auto;
+}
+.container--register {
+  @extend .container;
+  height: auto;
+}
+.form {
+  &__campo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  &__label {
+    min-width: 10rem;
+  }
+  &__input {
+    padding: 0.5rem;
+    outline: none;
+  }
+}
+.button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background-color: v.$action;
+  color: v.$font-dark;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:hover {
+    background-color: darken(v.$action, 10);
+  }
+}
+.cardValidation {
+  background-color: v.$danger;
+  padding: 0.5rem;
+}
+
+.login__banner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  margin-top: 2rem;
+
+  p {
+    &:hover {
+      color: darken(v.$action, 30);
+    }
+  }
+}
+.login_inputbutton {
+  @extend .button;
+  width: 10rem;
+  margin-left: 1rem;
+}

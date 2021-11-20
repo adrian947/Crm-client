@@ -1,0 +1,50 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.componentTitle {
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 4rem;
+  text-align: center;
+  color: v.$font-dark;
+  text-transform: uppercase;
+}
+.ButtonNewClient {
+  padding: 1rem;
+  background-color: v.$action2;
+  color: #000;
+  &:hover {
+    color: #000;
+    background-color: darken(v.$action2, 10);
+  }
+}
+/*New Client*/
+
+.ContainerForm {
+  max-width: 40rem;
+  border: 1px solid #000;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.formNewClient {
+  display: flex;
+  flex-direction: column;
+}
+.table__button {
+  color: #fff;
+  background-color: v.$danger;
+  border: none;
+  padding: 0.5rem;
+  width: 100%;
+  text-transform: uppercase;
+  &:hover {
+    background-color: darken(v.$danger, 10);
+  }
+  &--upload {
+    background-color: v.$success;
+    &:hover {
+      background-color: darken(v.$success, 10);
+    }
+  }
+}
